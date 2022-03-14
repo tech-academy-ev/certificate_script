@@ -1,5 +1,5 @@
 # Certificate Script
-Automates the creation of certificates for our participats.
+Automates the creation of certificates for our participants.
 
     How-To guide:
        1. Install python
