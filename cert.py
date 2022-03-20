@@ -49,11 +49,11 @@ def create_certificate(submission):
     template.render(context)
 
     print("Saving Doc...")
-    template.save("Certificates/" + submission['Vorname'] + " " +submission['Nachname'] + " Certificate.docx")
+    template.save("Certificates/"+ submission['Track'] +"/" + submission['Vorname'] + " " +submission['Nachname'] + " Certificate.docx")
     print("Doc saved.")
     # Zu lange (2-seitige) Zertifikate vielleicht in extra Ordner abspeichern für manuelle Korrektur?
     print("Converting docx to PDF...")
-    convert("Certificates/" + submission['Vorname'] + " " +submission['Nachname'] + " Certificate.docx", "Certificates/" + submission['Vorname'] + " " +submission['Nachname'] + " Certificate.pdf")
+    convert("Certificates/" + submission['Track'] +"/" + submission['Vorname'] + " " +submission['Nachname'] + " Certificate.docx", "Certificates/" + submission['Vorname'] + " " +submission['Nachname'] + " Certificate.pdf")
     print("PDF saved.")
 
     return True
