@@ -53,7 +53,7 @@ def create_certificate(submission):
     print("Doc saved.")
     # Zu lange (2-seitige) Zertifikate vielleicht in extra Ordner abspeichern für manuelle Korrektur?
     print("Converting docx to PDF...")
-    convert("Certificates/" + submission['Track'] +"/" + submission['Vorname'] + " " +submission['Nachname'] + " Certificate.docx", "Certificates/" + submission['Vorname'] + " " +submission['Nachname'] + " Certificate.pdf")
+    convert("Certificates/" + submission['Track'] +"/" + submission['Vorname'] + " " +submission['Nachname'] + " Certificate.docx", "Certificates/"  + submission['Track'] + "/" + submission['Vorname'] + " " +submission['Nachname'] + " Certificate.pdf")
     print("PDF saved.")
 
     return True
