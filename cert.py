@@ -19,10 +19,10 @@ def prepare_data(df):
     submissions_clean = df.fillna("")
 
     # Convert Kursnamen and Workshops from String to List
-    submissions_clean['Kursnamen'] = submissions_clean['Kursnamen'].apply(lambda x: x[1:-1].split(','))
-    submissions_clean['Workshops'] = submissions_clean['Workshops'].apply(lambda x: x[1:-1].split(','))
-    
-    submissions_pos = submissions_clean[submissions_clean['Pass / Failed'] == "P"].reset_index(drop=True)
+    submissions_clean['Kursnamen'] = submissions_clean['Kursnamen'].apply(lambda x: x[1:-1].split(',') if x != '' else x)
+    submissions_clean['Workshops'] = submissions_clean['Workshops'].apply(lambda x: x[1:-1].split(',') if x != '' else x)
+
+    submissions_pos = submissions_clean[submissions_clean['Pass / Failed'] == "Pass"].reset_index(drop=True)
 
     return submissions_pos
 
@@ -64,8 +64,10 @@ def main():
     Reads a csv File, performs a mail merge to create Certificates and then saves them as a PDF.
     """
     # Read CSV
-    submissions = pd.read_csv('Bewertungen.csv', delimiter=';') # Mit sep=None, engine='python' wird der erste Column Name um einen Char erweitert. Komischer Bug!
-    
+    # submissions = pd.read_csv('Bewertungen.csv', delimiter=';') # Mit sep=None, engine='python' wird der erste Column Name um einen Char erweitert. Komischer Bug!
+    submissions = pd.read_excel('Bewertungen.xlsx')
+    print(submissions.head())
+
     submissions_prep = prepare_data(submissions)
     num_of_pos_submissions = str(submissions_prep.shape[0])
 
