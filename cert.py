@@ -66,7 +66,6 @@ def main():
     # Read CSV
     # submissions = pd.read_csv('Bewertungen.csv', delimiter=';') # Mit sep=None, engine='python' wird der erste Column Name um einen Char erweitert. Komischer Bug!
     submissions = pd.read_excel('Bewertungen.xlsx')
-    print(submissions.head())
 
     submissions_prep = prepare_data(submissions)
     num_of_pos_submissions = str(submissions_prep.shape[0])
